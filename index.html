@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Researcher Portfolio</title>
+    <meta
+      name="description"
+      content="Professional portfolio website for a student researcher showcasing research, projects, and publications."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav-wrapper">
+        <a href="#home" class="logo">A.</a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#research" class="nav-link">Research</a></li>
+            <li><a href="#publications" class="nav-link">Publications</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Student Researcher • Data + Space Systems</p>
+            <h1>Building evidence-driven technology for real-world impact.</h1>
+            <p class="hero-copy">
+              I am a student researcher focused on computational science, remote sensing, and AI-assisted decision support. I design scalable experiments, publish reproducible insights, and collaborate across disciplines.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#research">View Research</a>
+              <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+            </div>
+          </div>
+          <aside class="highlight-card" aria-label="Research Summary">
+            <h2>At a glance</h2>
+            <div class="stats" role="list">
+              <div class="stat" role="listitem">
+                <span class="stat-number" data-target="8">0</span>
+                <span class="stat-label">Research Projects</span>
+              </div>
+              <div class="stat" role="listitem">
+                <span class="stat-number" data-target="4">0</span>
+                <span class="stat-label">Publications</span>
+              </div>
+              <div class="stat" role="listitem">
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-label">Awards</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2>About</h2>
+          <p>
+            I am currently pursuing my undergraduate studies while conducting research in machine learning and geospatial systems. My work bridges model development, scientific communication, and software implementation to support better decisions in climate, mobility, and infrastructure.
+          </p>
+        </div>
+      </section>
+
+      <section id="research" class="section section-alt">
+        <div class="container">
+          <h2>Research Focus</h2>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Applied AI</h3>
+              <p>Designing interpretable models for noisy and multi-modal scientific datasets.</p>
+            </article>
+            <article class="card">
+              <h3>Remote Sensing</h3>
+              <p>Analyzing satellite-derived signals for environmental monitoring and risk detection.</p>
+            </article>
+            <article class="card">
+              <h3>Human-Centered Tools</h3>
+              <p>Converting technical insights into dashboards and decision-support systems.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications" class="section">
+        <div class="container">
+          <h2>Selected Publications</h2>
+          <ol class="publication-list">
+            <li>
+              <strong>Reliable Multi-Sensor Fusion for Urban Heat Mapping</strong>
+              <span>International Workshop on Applied AI, 2026</span>
+            </li>
+            <li>
+              <strong>Low-Cost Satellite Signal Pipelines for Drought Monitoring</strong>
+              <span>Student Research Journal, 2025</span>
+            </li>
+            <li>
+              <strong>Transparent Model Cards for Scientific ML</strong>
+              <span>Open Science Conference, 2025</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="projects" class="section section-alt">
+        <div class="container">
+          <div class="projects-head">
+            <h2>Projects</h2>
+            <div class="chip-group" role="group" aria-label="Filter projects">
+              <button class="chip is-active" data-filter="all">All</button>
+              <button class="chip" data-filter="ai">AI</button>
+              <button class="chip" data-filter="space">Space</button>
+              <button class="chip" data-filter="tools">Tools</button>
+            </div>
+          </div>
+          <div class="grid-3" id="projectGrid">
+            <article class="card project" data-category="ai">
+              <h3>Flood Alert Classifier</h3>
+              <p>Real-time risk detection using satellite weather feeds and lightweight classifiers.</p>
+            </article>
+            <article class="card project" data-category="space">
+              <h3>Orbital Debris Mapper</h3>
+              <p>Interactive visual analytics for near-earth object and debris trajectories.</p>
+            </article>
+            <article class="card project" data-category="tools">
+              <h3>Research Notebook Template</h3>
+              <p>Reproducible workflow starter with experiment tracking and reporting dashboards.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container contact">
+          <h2>Contact</h2>
+          <p>Open to collaboration, internships, and research partnerships.</p>
+          <a class="btn btn-primary" href="mailto:researcher@example.com">researcher@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Student Researcher Portfolio</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

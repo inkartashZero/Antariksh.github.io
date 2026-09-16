@@ -1,69 +1,79 @@
-const navLinks = [...document.querySelectorAll('.nav-link')];
-const sections = navLinks
-  .map((link) => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
+const header = document.querySelector(".site-header");
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+const navLinks = document.querySelectorAll(".nav a");
+const yearElement = document.getElementById("year");
 
-const setActiveLink = () => {
-  const offset = window.scrollY + 140;
-  let activeId = sections[0]?.id;
 
-  sections.forEach((section) => {
-    if (offset >= section.offsetTop) {
-      activeId = section.id;
-    }
+// Update footer year
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+
+// Sticky header border
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 20) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+
+// Mobile menu
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
   });
+}
 
-  navLinks.forEach((link) => {
-    const isActive = link.getAttribute('href') === `#${activeId}`;
-    link.classList.toggle('is-active', isActive);
-  });
-};
 
-window.addEventListener('scroll', setActiveLink);
-setActiveLink();
-
-const counters = [...document.querySelectorAll('[data-target]')];
-const counterObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const target = Number(entry.target.dataset.target || '0');
-      let value = 0;
-      const step = Math.max(1, Math.ceil(target / 30));
-
-      const timer = window.setInterval(() => {
-        value += step;
-        if (value >= target) {
-          entry.target.textContent = String(target);
-          window.clearInterval(timer);
-          return;
-        }
-        entry.target.textContent = String(value);
-      }, 25);
-
-      observer.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.45 }
-);
-
-counters.forEach((counter) => counterObserver.observe(counter));
-
-const chips = [...document.querySelectorAll('.chip')];
-const projectCards = [...document.querySelectorAll('.project')];
-
-chips.forEach((chip) => {
-  chip.addEventListener('click', () => {
-    const filter = chip.dataset.filter;
-
-    chips.forEach((item) => item.classList.remove('is-active'));
-    chip.classList.add('is-active');
-
-    projectCards.forEach((card) => {
-      const show = filter === 'all' || card.dataset.category === filter;
-      card.classList.toggle('is-hidden', !show);
-    });
+// Close mobile menu after clicking a link
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
   });
 });
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+
+// Smooth reveal on scroll
+const revealElements = document.querySelectorAll(
+  ".research-item, .timeline-item, .publication, .project-card"
+);
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.1
+  }
+);
+
+revealElements.forEach((element) => {
+  element.classList.add("reveal");
+  observer.observe(element);
+});
+
+
+// Placeholder project links
+const projectLinks = document.querySelectorAll(".project-link");
+
+projectLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (link.getAttribute("href") === "#") {
+      event.preventDefault();
+
+      const message = link.dataset.placeholder;
+      if (message) {
+        alert(message);
+      }
+    }
+  });
+});
